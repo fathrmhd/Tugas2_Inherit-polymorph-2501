@@ -2,7 +2,7 @@
 
 ## 1. Identitas Mahasiswa & Repository
 - **Nama Lengkap**: Muhammad Fathir
-- **NPM**: 250810701100001 (NPM Awal-Akhir: `2501`)
+- **NPM**: 250810701100001
 - **Kelas Praktikum**: Pemrograman Berorientasi Objek A
 - **Mata Kuliah**: Praktikum Pemrograman Berorientasi Objek
 - **Tautan Repository**: [https://github.com/fathrmhd/Tugas2_Inherit-polymorph-2501](https://github.com/fathrmhd/Tugas2_Inherit-polymorph-2501)
@@ -10,7 +10,7 @@
 ---
 
 ## 2. Deskripsi Singkat
-Repositori ini berisi solusi lengkap untuk Tugas 2 Praktikum Pemrograman Berorientasi Objek yang mencakup materi Praktikum 6 (Inheritance) dan Praktikum 7 (Composition dan Polimorfisme). Proyek ini menyelesaikan empat modul soal serta satu bagian analisis konsep komprehensif, mengimplementasikan konsep hak akses *protected*, pewarisan bertingkat (*multi-level inheritance*), *defensive copying*, *overriding* versus *overloading*, penanganan pengecualian (*exception handling*), serta *dynamic method dispatch* yang bersih tanpa *magic numbers* dan dilengkapi dokumentasi standar Javadoc.
+Repositori ini berisi solusi  untuk Tugas 2 Praktikum Pemrograman Berorientasi Objek.
 
 ---
 
@@ -40,7 +40,7 @@ Berikut adalah fungsionalitas utama yang dapat dinikmati oleh pengguna program p
 ---
 
 ## 5. Struktur Project
-Struktur folder repositori disajikan sebagai berikut:
+Struktur folder repositori sebagai berikut:
 ```text
 Tugas2_Inherit-polymorph-2501/
 ├── src/
@@ -67,7 +67,7 @@ Tugas2_Inherit-polymorph-2501/
 │       ├── ProdukFisik.java
 │       ├── ProdukDigital.java
 │       ├── Langganan.java
-│       ├── ProdukBundel.java       <-- Fitur Tantangan Opsional
+│       ├── ProdukBundel.java     
 │       ├── Keranjang.java
 │       └── TesSoal4.java
 ├── .gitignore
@@ -77,48 +77,7 @@ Tugas2_Inherit-polymorph-2501/
 
 ---
 
-## 6. Prasyarat
-- **Java Development Kit (JDK)**: JDK versi 21 atau lebih baru (kompatibel dengan OpenJDK 21 / Oracle JDK 21).
-- **Integrated Development Environment (IDE)**: IntelliJ IDEA (Community / Ultimate Edition) disarankan, atau teks editor profesional dengan dukungan terminal (VS Code, CLI).
-
----
-
-## 7. Cara Menjalankan Program
-
-### A. Melalui IntelliJ IDEA
-1. Buka IntelliJ IDEA, pilih **File** -> **Open...**, lalu arahkan ke direktori root `Tugas2_Inherit-polymorph-2501`.
-2. Pastikan folder `src` telah ditandai sebagai **Sources Root** (klik kanan folder `src` -> **Mark Directory as** -> **Sources Root**).
-3. Buka menu **File** -> **Project Structure** -> **Project**, pastikan SDK yang dipilih adalah Java 21.
-4. Untuk menjalankan setiap soal:
-   - Navigasikan ke berkas `TesSoal1.java`, `TesSoal2.java`, `TesSoal3.java`, atau `TesSoal4.java`.
-   - Klik kanan pada berkas atau klik ikon tombol hijau (**Run**) di sebelah deklarasi `main()` method.
-
-### B. Melalui Command Line (Terminal / CMD / PowerShell / Bash)
-Buka terminal pada root direktori project, lakukan kompilasi seluruh paket ke folder bin, kemudian eksekusi kelas pengujian yang diinginkan:
-
-```bash
-# Membuat direktori bin untuk hasil kompilasi
-mkdir -p bin
-
-# Kompilasi seluruh berkas Java
-javac -d bin src/soal1/*.java src/soal2/*.java src/soal3/*.java src/soal4/*.java
-
-# Menjalankan Soal 1
-java -cp bin soal1.TesSoal1
-
-# Menjalankan Soal 2
-java -cp bin soal2.TesSoal2
-
-# Menjalankan Soal 3
-java -cp bin soal3.TesSoal3
-
-# Menjalankan Soal 4
-java -cp bin soal4.TesSoal4
-```
-
----
-
-## 8. Contoh Output Eksekusi
+## 6. Contoh Output Eksekusi
 
 ### Soal 1: Hierarki Perangkat Elektronik
 ```text
@@ -178,7 +137,7 @@ Paket: Paket Belajar & Gear | Deskripsi: bundel 2 produk | Total Asli: Rp303000 
 
 ---
 
-## 9. Jawaban Soal dan Analisis Konsep
+## 7. Jawaban Soal dan Analisis Konsep
 
 ### Pertanyaan Tambahan Soal 1
 **Instruksi**: Ubah `harga` menjadi `private` pada kelas `Perangkat`, lalu lakukan kompilasi. Salin pesan error yang muncul dan jelaskan mengapa error tersebut muncul.
@@ -278,7 +237,7 @@ Method `suara()` yang dijalankan adalah milik kelas **`Kucing`** (menghasilkan c
 
 ---
 
-### Bagian Analisis Konsep Umum (Jawaban 3-5 Kalimat per Poin)
+### Bagian Analisis Konsep
 
 #### 1. Perbedaan Method Overriding dan Method Overloading
 Method *overloading* adalah teknik mendefinisikan beberapa method bernama sama di dalam satu kelas yang dibedakan berdasarkan variasi daftar parameternya, di mana penentuan method yang dipanggil terjadi pada saat kompilasi (*compile-time polymorphism* / *static binding*). Contoh penerapannya pada tugas ini terdapat pada kelas `soal3.Garis`, yang menyediakan konstruktor `Garis(Titik, Titik)` dan konstruktor overload `Garis(double, double, double, double)`. Sebaliknya, method *overriding* adalah pendefinisian ulang method milik superclass oleh subclass dengan nama, tipe kembalian, dan daftar parameter yang identik, di mana resolusi eksekusi dilakukan saat program berjalan (*runtime polymorphism* / *dynamic dispatch*). Contohnya diterapkan pada kelas `soal4.ProdukFisik` yang menimpa method `hitungHargaAkhir()` dari kelas `Produk`. Overriding sangat bergantung pada relasi pewarisan (*inheritance*) untuk merealisasikan fleksibilitas polimorfisme, sedangkan overloading dapat terjadi tanpa keterlibatan pewarisan.
@@ -291,7 +250,7 @@ Method `cetakStruk()` dan `hitungTotal()` tidak memerlukan `instanceof` karena k
 
 ---
 
-## 10. Batasan dan Pengembangan Lanjutan
+## 7. Batasan dan Pengembangan Lanjutan
 Meskipun sistem telah berhasil mengimplementasikan seluruh kebutuhan spesifikasi dan tantangan opsional dengan baik, terdapat beberapa batasan yang dapat dikembangkan lebih lanjut di masa depan:
 - **Penyimpanan Data Persisten**: Data keranjang belanja dan katalog perangkat saat ini masih bersifat sementara (*in-memory*); integrasi basis data (seperti SQLite/PostgreSQL) atau serialisasi JSON/XML dapat ditambahkan agar data tidak hilang saat program ditutup.
 - **Antarmuka Grafis (GUI / Web)**: Program saat ini berjalan berbasis Command Line Interface (CLI); pengembangan antarmuka visual berbasis JavaFX atau antarmuka web modern akan meningkatkan kenyamanan pengguna.
