@@ -43,6 +43,11 @@ Berikut adalah fungsionalitas utama yang dapat dinikmati oleh pengguna program p
 Struktur folder repositori sebagai berikut:
 ```text
 Tugas2_Inherit-polymorph-2501/
+├── assets/
+│   ├── soal1.png
+│   ├── soal2.png
+│   ├── soal3.png
+│   └── soal4.png
 ├── src/
 │   ├── soal1/
 │   │   ├── Perangkat.java
@@ -77,9 +82,56 @@ Tugas2_Inherit-polymorph-2501/
 
 ---
 
-## 6. Contoh Output Eksekusi
+## 6. Prasyarat
+Untuk menjalankan program ini di lingkungan lokal Anda, pastikan sistem telah memenuhi prasyarat berikut:
+- **Java Development Kit (JDK)**: JDK versi 21 atau versi LTS terbaru (didukung minimal JDK 17+).
+- **Integrated Development Environment (IDE)**: IntelliJ IDEA (sangat disarankan), Eclipse, atau Visual Studio Code dengan ekstensi *Extension Pack for Java*.
+- **Command Line Tools**: PowerShell / Command Prompt / Terminal Unix dengan perintah `javac` dan `java` yang telah terdaftar pada environment variables sistem.
+
+---
+
+## 7. Cara Menjalankan Program
+
+### A. Menjalankan lewat IntelliJ IDEA
+1. Buka folder root `Tugas2_Inherit-polymorph-2501` di IntelliJ IDEA (`File` -> `Open`).
+2. Tandai folder `src` sebagai Sources Root jika belum otomatis terdeteksi (klik kanan folder `src` -> `Mark Directory as` -> `Sources Root`).
+3. Pastikan Project SDK diarahkan ke JDK 21 (`File` -> `Project Structure` -> `Project` -> `SDK`).
+4. Navigasikan ke file penguji yang ingin dijalankan:
+   - `src/soal1/TesSoal1.java`
+   - `src/soal2/TesSoal2.java`
+   - `src/soal3/TesSoal3.java`
+   - `src/soal4/TesSoal4.java`
+5. Klik ikon **Run ▶** hijau di samping baris `public static void main(String[] args)` atau tekan pintasan `Shift + F10`.
+
+### B. Menjalankan lewat Command Line (Terminal / PowerShell)
+Buka terminal di root folder project, lalu jalankan perintah kompilasi dan eksekusi per soal berikut:
+
+- **Soal 1**:
+  ```powershell
+  javac -d out src/soal1/*.java ; java -cp out soal1.TesSoal1
+  ```
+- **Soal 2**:
+  ```powershell
+  javac -d out src/soal2/*.java ; java -cp out soal2.TesSoal2
+  ```
+- **Soal 3**:
+  ```powershell
+  javac -d out src/soal3/*.java ; java -cp out soal3.TesSoal3
+  ```
+- **Soal 4**:
+  ```powershell
+  javac -d out src/soal4/*.java ; java -cp out soal4.TesSoal4
+  ```
+
+---
+
+## 8. Contoh Output Eksekusi
 
 ### Soal 1: Hierarki Perangkat Elektronik
+Eksekusi menampilkan informasi katalog perangkat dengan formatting spesifikasi dan perhitungan pajak serta diskon promo.
+
+![Screenshot Output Soal 1](assets/soal1.png)
+
 ```text
 Asus | garansi 24 bulan | RAM 16 GB | layar 14.0 inci
 Samsung | garansi 12 bulan | 128 GB | 3 kamera
@@ -88,7 +140,13 @@ Pajak laptop: Rp800000
 Promo laptop 10 persen: Rp7200000
 ```
 
+---
+
 ### Soal 2: Analisis Output, Error, dan Polimorfisme
+Eksekusi memperlihatkan perilaku pewarisan dinamis, penanganan aman `ClassCastException` menggunakan `instanceof` (skenario exception tertangani), siklus inisialisasi konstruktor berantai, dan perhitungan polimorfik luas lingkaran vs titik.
+
+![Screenshot Output Soal 2](assets/soal2.png)
+
 ```text
 === SOAL 2 BAGIAN A ===
 Hewan dibuat: Tom
@@ -116,13 +174,25 @@ B dibuat, nilai=5
 0.0
 ```
 
+---
+
 ### Soal 3: Titik dan Garis (Aliasing & Defensive Copying)
+Eksekusi membuktikan bahwa manipulasi koordinat titik eksternal tidak mengubah isi koordinat internal `Garis` karena diterapkannya *defensive copying*.
+
+![Screenshot Output Soal 3](assets/soal3.png)
+
 ```text
 (0.0, 0.0) - (3.0, 4.0) panjang=5.0
 (1.0, 1.0) - (5.0, 5.0)
 ```
 
+---
+
 ### Soal 4: Mini Project Toko Digital & Exception Handling
+Eksekusi menampilkan struk belanja polimorfik (skenario normal), rekapitulasi kuantitas produk berdasarkan kategori, penolakan produk duplikat dengan `IllegalStateException` (skenario exception tertangani), serta fungsionalitas paket `ProdukBundel`.
+
+![Screenshot Output Soal 4](assets/soal4.png)
+
 ```text
 F01 | Keyboard Mekanik | fisik 1.5 kg | Rp515000
 D01 | Ebook Java | digital 20.0 MB | Rp90000
@@ -137,7 +207,7 @@ Paket: Paket Belajar & Gear | Deskripsi: bundel 2 produk | Total Asli: Rp303000 
 
 ---
 
-## 7. Jawaban Soal dan Analisis Konsep
+## 9. Jawaban Soal dan Analisis Konsep
 
 ### Pertanyaan Tambahan Soal 1
 **Instruksi**: Ubah `harga` menjadi `private` pada kelas `Perangkat`, lalu lakukan kompilasi. Salin pesan error yang muncul dan jelaskan mengapa error tersebut muncul.
@@ -250,7 +320,7 @@ Method `cetakStruk()` dan `hitungTotal()` tidak memerlukan `instanceof` karena k
 
 ---
 
-## 7. Batasan dan Pengembangan Lanjutan
+## 10. Batasan dan Pengembangan Lanjutan
 Meskipun sistem telah berhasil mengimplementasikan seluruh kebutuhan spesifikasi dan tantangan opsional dengan baik, terdapat beberapa batasan yang dapat dikembangkan lebih lanjut di masa depan:
 - **Penyimpanan Data Persisten**: Data keranjang belanja dan katalog perangkat saat ini masih bersifat sementara (*in-memory*); integrasi basis data (seperti SQLite/PostgreSQL) atau serialisasi JSON/XML dapat ditambahkan agar data tidak hilang saat program ditutup.
 - **Antarmuka Grafis (GUI / Web)**: Program saat ini berjalan berbasis Command Line Interface (CLI); pengembangan antarmuka visual berbasis JavaFX atau antarmuka web modern akan meningkatkan kenyamanan pengguna.
